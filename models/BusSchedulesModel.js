@@ -7,12 +7,20 @@ const busSchedulesSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  StartDate: {
+    type: String,
+    required: true,
+  },
+  EndDate: {
+    type: String,
+    required: true,
+  },
   StartTime: {
-    type: Date,
+    type: String,
     required: true,
   },
   EndTime: {
-    type: Date,
+    type: String,
     required: true,
   },
   DriverName: {
