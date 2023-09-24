@@ -23,8 +23,8 @@ const busSchedulesSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  DriverName: {
-    type: String,
+  DriverNo: {
+    type: Number,
     required: true,
   },
   inspectorNo: {
