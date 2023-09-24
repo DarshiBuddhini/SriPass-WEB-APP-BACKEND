@@ -27,7 +27,7 @@ const busSchedulesSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  InspectorName: {
+  inspectorNo: {
     type: String,
     required: true,
   },
