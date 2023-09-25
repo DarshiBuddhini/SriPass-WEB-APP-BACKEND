@@ -3,28 +3,30 @@
 const mongoose = require('mongoose');
 
 const busSchema = new mongoose.Schema({
-  bus_id: {
-    type: Number,
+  busId: {
+    type: String,
     required: true,
     unique: true,
   },
-  name: {
+  licensePlateNumber: {
     type: String,
     required: true,
   },
-  type: {
+  seatingCapacity: {
+    type: Number,
+    required: true,
+  },
+  fuelType: {
     type: String,
     required: true,
   },
-  brand: {
+  ownerInformation: {
     type: String,
     required: true,
   },
-  model: {
-    type: String, 
-    required: true, 
-  },
-  
+
+
+
 });
 
 const Bus = mongoose.model('Bus', busSchema);
