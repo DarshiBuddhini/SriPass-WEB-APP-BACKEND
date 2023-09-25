@@ -30,7 +30,11 @@
 const mongoose = require('mongoose');
 
 const destinationSchema = new mongoose.Schema({
-  destination: {
+  startPoint: {
+    type: String,
+    required: true,
+  },
+  endPoint: {
     type: String,
     required: true,
   },
