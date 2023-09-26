@@ -9,6 +9,7 @@ const localPassengersRouter = require('./routes/localPassengersRoute'); // Impor
 const busInspectorsRouter = require('./routes/BusInspectorsRoute'); // Import your busInspectors routes
 const busesRoute=require('./routes/BusRoute'); // Import busroute routes
 const passengerTravelHistoryRoutes = require('./routes/PassengerTravelHistoryRoute'); // Replace with the actual path
+const transportManagerRoute = require('./routes/TransportManagerRoute'); // Replace with the actual path
 
 const app = express();
 const db = require('./db')
@@ -24,6 +25,8 @@ app.use('/api/localpassengers', localPassengersRouter);
 app.use('/api/businspectors', busInspectorsRouter);
 app.use('/api/bus', busesRoute); 
 app.use('/api/travelhistory', passengerTravelHistoryRoutes);
+app.use('/api/bus', busesRoute);
+app.use('/api/manager',transportManagerRoute ); 
 
 app.get("/", (req, res) => {
 
