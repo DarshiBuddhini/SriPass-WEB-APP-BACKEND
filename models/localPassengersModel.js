@@ -20,7 +20,7 @@ const localPassengersSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  topUpHistory: {
+  topUpAmount: {
     type: Number,
     required: true,
     default: 0.00,
