@@ -23,7 +23,8 @@ const passengerTravelHistorySchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-
+}, {
+    timestamps: true, // Add createdAt and updatedAt fields
 });
 
 const PassengerTravelHistory = mongoose.model('PassengerTravelHistory', passengerTravelHistorySchema);
