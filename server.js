@@ -113,7 +113,7 @@ app.get("/", (req, res) => {
     </head>
     <body>
         <div class="container">
-        <img src="" alt="Logo" width="150"> <!-- Add this line for the logo -->
+        <img src="https://github.com/SriPass/SriPass-WEB-APP-BACKEND/blob/main/logo.png?raw=true" alt="Logo" width="150"> <!-- Add this line for the logo -->
             <div class="title">SriPass Backend Server</div>
             <h2><span class="active">Active</span></h2>
             <h2>Code Authors:</h2>
@@ -123,6 +123,7 @@ app.get("/", (req, res) => {
             <div class="license">
                 ${mitLicenseText}
             </div>
+            <p>GitHub Repository: <a href="https://github.com/SriPass/SriPass-WEB-APP-BACKEND" target="_blank">https://github.com/SriPass/SriPass-WEB-APP-BACKEND</a></p> <!-- Add this line for the GitHub repo link -->
         </div>
     </body>
     </html>
@@ -130,6 +131,7 @@ app.get("/", (req, res) => {
 
     res.send(responseMessage);
 });
+
 
 
 
