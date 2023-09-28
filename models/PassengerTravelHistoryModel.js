@@ -17,6 +17,7 @@ const passengerTravelHistorySchema = new mongoose.Schema({
     cost: {
         type: Number,
         required: true,
+        default: 0.00,
     },
     RouteNo: {
         type: String,
