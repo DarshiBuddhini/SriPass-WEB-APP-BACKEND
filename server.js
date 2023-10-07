@@ -279,6 +279,14 @@ NESTED TABLE investments STORE AS Investments
 CREATE TYPE exchanges_varray as VARRAY(3) of VARCHAR2(40)
 
 
+SELECT c.fname || '' || c.lname AS client_name,
+	i.company.company AS stock_name,
+	SUM(i.qty) AS total_shares_held,
+	SUM(i.purchasePrice*i.qty)/SUM(i.qty)AS average_purchase_price
+FROM Clients c
+CROSS JOIN TABLE (c.investments)i
+GROUP BY c.fname,c.lname,i.company.company;
+
 
 
 ALTER TYPE stock_t
