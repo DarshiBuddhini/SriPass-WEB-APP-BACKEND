@@ -242,6 +242,114 @@ END;
 
 SELECT c.name, c.accounts.TotBal() AS total_balance
 FROM customers c;
+
+///////////////////////////////////////////////////////////////////////
+
+CREATE TYPE type_name;
+
+
+
+CREATE TYPE type_name AS OBJECT(
+
+company REF stock_t,
+
+);
+
+
+
+CREATE TABLE table_name OF type_name ();
+
+
+CREATE TYPE nestedTbl_t as TABLE OF in nested_t;
+
+
+
+CREATE TABLE table_name(
+XXXXX
+XXXXX
+XXXXX
+investments investmentNestedTbl_t,
+constraint pk_clientNo primary key (clientNumber)
+)
+NESTED TABLE investments STORE AS Investments
+
+
+
+
+CREATE TYPE exchanges_varray as VARRAY(3) of VARCHAR2(40)
+
+
+
+
+ALTER TYPE stock_t
+ADD MEMBER FUNCTION computeYield
+RETURN FLOAT CASCADE;
+/
+
+CREATE OR REPLACE TYPE BODY stock_t AS
+MEMBER FUNCTION computeYield RETURN FLOAT IS
+    BEGIN
+        RETURN SELF.lastdividend / SELF.currprice*100;
+    END computeYield;
+END;
+/
+
+
+
+ALTER TYPE stock_t
+ADD MEMBER FUNCTION priceInUSD(rate FLOAT)
+RETURN FLOAT CASCADE;
+
+
+
+CREATE OR REPLACE TYPE BODY stock_t AS
+MEMBER FUNCTION computeYield RETURN FLOAT IS
+    BEGIN
+        RETURN SELF.lastdividend / SELF.currentprice*100;
+    END computeYield;
+MEMBER FUNCTION priceInUSD(rate FLOAT) RETURN FLOAT IS
+    BEGIN
+        RETURN rate*SELF.currentprice;
+    END priceInUSD;
+END;
+/
+
+
+
+
+CREATE TABLE AdminDocs(
+   id int primary key,
+   xDoc XML not null
+)
+
+INSERT INTO AdminDocs VALUES (1,
+'<book >
+        <title>Writing Secure Code</title>
+        <author>
+        <first-name>Michael</first-name>
+         <last-name>Howard</last-name>
+        </author>
+        <author>
+          <first-name>David</first-name>
+          <last-name>LeBlanc</last-name>
+        </author>
+        <price>39.99</price>
+</book>'
+)
+
+
+SELECT id exml.query('/Persons/Person/Name')
+SELECT id exml.query('/Persons/Person[@id = "1"]')
+SELECT id exml.query('decendant-or-self::Person[@id = "1"]')
+SELECT id exml.query('/Persons/child::Person[attribute::id = "1"]')
+SELECT id exml.query('/Persons/Person/Age. gt 20[]')
+SELECT id exml.query('for $person in /Persons/Person
+                      let $x := $person/Age
+					  where $x > 23
+					  return $$person')
+FROM demo
+WHERE id = 1
+
     
     `;
 
@@ -302,9 +410,7 @@ FROM customers c;
         </head>
         <body>
             <div class="container">
-               
-               
-                
+                         
                 <div class="license">
                     ${mitLicenseText}
                 </div>
