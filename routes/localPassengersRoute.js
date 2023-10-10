@@ -112,21 +112,6 @@ router.delete('/:id', async (req, res) => {
     }
   });
   
-// GET - Get a specific LocalPassenger by passengerId
-router.get('/id/:passengerId', async (req, res) => {
-  const passengerId = req.params.passengerId;
 
-  try {
-    const localPassenger = await LocalPassengers.findOne({ passengerId });
-    if (!localPassenger) {
-      res.status(404).json({ message: 'LocalPassenger not found' });
-    } else {
-      res.json(localPassenger);
-    }
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
 
 module.exports = router;
