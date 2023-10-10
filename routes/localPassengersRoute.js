@@ -15,6 +15,7 @@ router.post("/login", async (req, res) => {
       // Create a response object with the passenger's name, email, and ID
       const currentPassenger = {
         name: passenger.firstName,
+        passengerId: passenger.passengerId,
         email: passenger.email,
         _id: passenger._id,
       };
