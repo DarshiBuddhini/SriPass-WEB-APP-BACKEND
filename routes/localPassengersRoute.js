@@ -17,7 +17,7 @@ router.post("/login", async (req, res) => {
         name: passenger.firstName,
         passengerId: passenger.passengerId,
         email: passenger.email,
-        _id: passenger._id,
+        id: passenger._id,
       };
 
       // Send the response object back to the client
