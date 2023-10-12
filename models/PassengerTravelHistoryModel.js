@@ -6,11 +6,11 @@ const passengerTravelHistorySchema = new mongoose.Schema({
         type: String, // Assuming PassengerID is a string
         required: true,
     },
-    duration: {
-        type: Number,
+    route: {
+        type: String,
         required: true,
     },
-    distance: {
+    routeNo: {
         type: Number,
         required: true,
     },
@@ -19,14 +19,15 @@ const passengerTravelHistorySchema = new mongoose.Schema({
         required: true,
         default: 0.00,
     },
-    RouteNo: {
+    time: {
         type: String,
         required: true,
     },
-    journey: {
+    date: {
         type: String,
         required: true,
     },
+
 }, {
     timestamps: true, // Add createdAt and updatedAt fields
 });
