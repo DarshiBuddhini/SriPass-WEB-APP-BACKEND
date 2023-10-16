@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const BusSchedules = require('../models/BusSchedulesModel'); // Update the path to the BusSchedules model
 const { expect } = require('chai');
-
+const Bus = require('../models/BusModel'); 
 describe('BusSchedules Model', () => {
   before(async () => {
     // Connect to your test database
@@ -18,7 +18,7 @@ describe('BusSchedules Model', () => {
 
   it('should save a valid bus schedule to the database', async () => {
     const validSchedule = new BusSchedules({
-      RouteNo: '120',
+      RouteNo: '121',
       StartDate: '2023-01-01',
       EndDate: '2023-01-31',
       StartTime: '08:00 AM',
@@ -53,6 +53,33 @@ describe('BusSchedules Model', () => {
       expect(error).to.be.instanceOf(mongoose.Error.ValidationError);
     }
   });
+
+
+  //3rd test case
+  it('should not save a bus schedule with an unsaved licensePlateNumber', async () => {
+    const busScheduleData = {
+      RouteNo: 'R001',
+      StartDate: '2023-01-01',
+      EndDate: '2023-01-10',
+      StartTime: '08:00 AM',
+      EndTime: '04:00 PM',
+      DriverNo: 123,
+      inspectorNo: 'I001',
+      licensePlateNumber: 'XYZ12333', // This licensePlateNumber should exist in BusModel
+    };
+
+    const busSchedule = new BusSchedules(busScheduleData);
+
+    try {
+      await busSchedule.save();
+      // The test should fail if save is successful
+      expect.fail('Expected error but save was successful');
+    } catch (error) {
+      // Check for an error due to an unsaved licensePlateNumber
+      expect(error).to.be.instanceOf(mongoose.Error.ValidationError);
+    }
+  });
+
 
   it('should not save a bus schedule with a non-unique RouteNo', async () => {
     const schedule1 = new BusSchedules({
