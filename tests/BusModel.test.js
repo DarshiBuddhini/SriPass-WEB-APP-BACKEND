@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose');
 const Bus = require('../models/BusModel'); // Update the path to the BusModel
 
@@ -12,11 +13,6 @@ describe('BusModel', () => {
   after(async () => {
     // Disconnect from the test database after all tests are completed
     await mongoose.disconnect();
-  });
-
-  beforeEach(async () => {
-    // Clear the database and add test data before each test
-    await Bus.deleteMany({});
   });
 
   it('should save a valid bus to the database', async () => {
@@ -67,7 +63,9 @@ describe('BusModel', () => {
       ownerInformation: 'Jane Smith',
     });
 
+    // Save the first bus
     await bus1.save();
+
     try {
       await bus2.save();
       // The test should fail if save is successful
