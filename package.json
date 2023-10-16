@@ -23,7 +23,8 @@
   },
   "scripts": {
     "test:driver-model": "mocha tests/DriverModel.test.js",
-    "test:bus-model": "mocha tests/BusModel.test.js"
+    "test:bus-model": "mocha tests/BusModel.test.js",
+    "test:route-model": "mocha tests/RouteforBusModel.test.js"
   }
 
   
